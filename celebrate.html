@@ -3,521 +3,226 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QUBIC – Submission Received!</title>
+<title>QUBIC – Nice work!</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --red: #FF391E;
-    --navy: #1E3A5F;
-    --grey: #4D4D4D;
-    --orange: #F58634;
-    --teal: #008B8B;
-    --magenta: #C73A9D;
-    --burgundy: #2F0A01;
-    --white: #FFFFFF;
-  }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-    background: var(--navy);
-    transition: background 0.5s ease;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+    background: #1E3A5F;
   }
-
-  canvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
-
+  canvas { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
   .content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 2rem;
-    max-width: 700px;
-    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    position: relative; z-index: 10; text-align: center;
+    padding: 2.5rem 2rem; max-width: 680px; width: 100%;
+    animation: fadeInUp 0.8s cubic-bezier(0.16,1,0.3,1) both;
   }
-
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .tick {
-    width: 80px; height: 80px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.15);
-    display: flex; align-items: center; justify-content: center;
+  @keyframes fadeInUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+  .logo-wrap {
     margin: 0 auto 1.5rem;
-    font-size: 2.5rem;
-    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.3);
+    animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.35s both;
   }
-
-  @keyframes popIn {
-    from { transform: scale(0) rotate(-180deg); opacity: 0; }
-    to   { transform: scale(1) rotate(0deg); opacity: 1; }
-  }
-
-  .label {
-    font-family: 'Archivo', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 0.75rem;
-    animation: fadeInUp 0.6s ease 0.5s both;
-  }
-
-  h1 {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 900;
-    font-size: clamp(2rem, 6vw, 3.5rem);
-    color: var(--white);
-    line-height: 1.05;
-    margin-bottom: 1.25rem;
-    animation: fadeInUp 0.6s ease 0.6s both;
-  }
-
-  .message {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-    color: rgba(255,255,255,0.85);
-    line-height: 1.6;
-    font-weight: 300;
-    margin-bottom: 2rem;
-    animation: fadeInUp 0.6s ease 0.7s both;
-  }
-
+  .logo-wrap img { height: 90px; width: auto; }
+  @keyframes popIn { from{transform:scale(0) rotate(-10deg);opacity:0} to{transform:scale(1) rotate(0);opacity:1} }
+  .label { font-family:'Archivo',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:0.6rem; animation:fadeInUp 0.6s ease 0.5s both; }
+  h1 { font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(1.8rem,5.5vw,3rem); color:#fff; line-height:1.05; margin-bottom:1rem; animation:fadeInUp 0.6s ease 0.6s both; }
+  .message { font-size:clamp(0.95rem,2.2vw,1.15rem); color:rgba(255,255,255,0.82); line-height:1.65; font-weight:300; margin-bottom:1.5rem; animation:fadeInUp 0.6s ease 0.7s both; }
   .day-pill {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 100px;
-    padding: 0.4rem 1.2rem;
-    font-family: 'Archivo', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 2rem;
-    backdrop-filter: blur(10px);
-    animation: fadeInUp 0.6s ease 0.8s both;
-    text-decoration: none;
-    transition: background 0.2s;
+    display:inline-block; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
+    border-radius:100px; padding:0.35rem 1.1rem; font-family:'Archivo',sans-serif; font-size:0.8rem;
+    font-weight:700; color:white; margin-bottom:2rem; backdrop-filter:blur(10px);
+    animation:fadeInUp 0.6s ease 0.8s both; text-decoration:none; transition:background 0.2s,transform 0.15s;
   }
-  .day-pill:hover { background: rgba(255,255,255,0.25); }
-
-  .redirect-bar {
-    width: 200px;
-    height: 3px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 10px;
-    margin: 0 auto;
-    overflow: hidden;
-    animation: fadeInUp 0.6s ease 0.9s both;
-  }
-
-  .redirect-fill {
-    height: 100%;
-    border-radius: 10px;
-    background: white;
-    width: 0%;
-    animation: fillBar 5s linear 1s forwards;
-  }
-
-  @keyframes fillBar {
-    from { width: 0%; }
-    to   { width: 100%; }
-  }
-
-  .redirect-text {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.4);
-    margin-top: 0.75rem;
-    animation: fadeInUp 0.6s ease 1s both;
-  }
-
-  /* Floating emoji layer */
-  .emoji-layer {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .floating-emoji {
-    position: absolute;
-    font-size: 2rem;
-    animation: floatUp linear both;
-    opacity: 0;
-  }
-
-  @keyframes floatUp {
-    0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-  }
+  .day-pill:hover { background:rgba(255,255,255,0.22); transform:translateY(-1px); }
+  .what-next { margin-top:0.5rem; animation:fadeInUp 0.6s ease 0.85s both; }
+  .what-next p { font-size:0.8rem; color:rgba(255,255,255,0.45); letter-spacing:0.12em; text-transform:uppercase; font-family:'Archivo',sans-serif; font-weight:700; margin-bottom:1rem; }
+  .btn-group { display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; margin-bottom:1rem; }
+  .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; border-radius:8px; font-family:'Archivo',sans-serif; font-weight:700; font-size:0.9rem; cursor:pointer; border:none; text-decoration:none; transition:transform 0.15s,box-shadow 0.15s,background 0.2s; }
+  .btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.25); }
+  .btn-primary { background:#FF391E; color:white; }
+  .btn-primary:hover { background:#ff5236; }
+  .btn-secondary { background:rgba(255,255,255,0.12); color:white; border:1px solid rgba(255,255,255,0.25); backdrop-filter:blur(10px); }
+  .btn-secondary:hover { background:rgba(255,255,255,0.22); }
+  .btn-ghost { background:transparent; color:rgba(255,255,255,0.5); font-size:0.8rem; padding:0.5rem 1rem; border:1px solid rgba(255,255,255,0.12); border-radius:6px; }
+  .btn-ghost:hover { color:rgba(255,255,255,0.8); background:rgba(255,255,255,0.08); }
+  .emoji-layer { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; }
+  .floating-emoji { position:absolute; animation:floatUp linear both; opacity:0; }
+  @keyframes floatUp { 0%{transform:translateY(0) rotate(0);opacity:1} 100%{transform:translateY(-110vh) rotate(360deg);opacity:0} }
 </style>
 </head>
 <body>
-
 <canvas id="canvas"></canvas>
 <div class="emoji-layer" id="emojiLayer"></div>
-
 <div class="content">
-  <div class="tick" id="tick">✓</div>
+  <div class="logo-wrap">
+    <img src="QUBIC_logo_stacked.png" alt="QUBIC" onerror="this.style.display='none'" />
+  </div>
   <div class="label">QUBIC Research</div>
-  <h1 id="headline">Publication Submitted!</h1>
+  <h1 id="headline">Another one for the books.</h1>
   <p class="message" id="msgText"></p>
   <div id="dayPillWrap"></div>
-  <div class="redirect-bar"><div class="redirect-fill" id="fillBar"></div></div>
-  <p class="redirect-text">Returning you in a moment…</p>
+  <div class="what-next">
+    <p>What would you like to do next?</p>
+    <div class="btn-group">
+      <a id="btnSubmit" class="btn btn-primary" href="#">📄 Submit another publication</a>
+      <a class="btn btn-secondary" href="https://www.qubic.au/staff-dashboard/" target="_blank">🏛 Go to the Member Portal</a>
+    </div>
+    <button class="btn btn-ghost" onclick="window.close()">✕ I'm done for now</button>
+  </div>
 </div>
-
 <script>
-// ── URL PARAMS ──────────────────────────────────────────────
 const params = new URLSearchParams(window.location.search);
 const dayName = decodeURIComponent(params.get('day') || '');
-const returnUrl = decodeURIComponent(params.get('return') || '');
+const dayUrl  = decodeURIComponent(params.get('url') || '');
+const returnUrl = decodeURIComponent(params.get('return') || 'https://creatorapp.zohopublic.com.au/admin.qubic_uq/qubic-clever/form-perma/Publications/9g26Un0p6yhtdDVCx3TVhU0JY6P2p72ASaMqZHaEwbjemkWTU26naZaMJ5mKMsJjvRjp4pjynyHvYa2UXKDejeajtTafHuUkf4w6');
+document.getElementById('btnSubmit').href = returnUrl;
 
-// ── EMOJI SETS by keyword matching ──────────────────────────
-const emojiMap = [
-  { keys: ['jazz','music','song','band','drum','guitar','piano','concert','melody'], emoji: ['🎷','🎸','🎹','🎺','🎻','🥁','🎵','🎶','🎤'] },
-  { keys: ['dance','dancing','ballet','tango','waltz'], emoji: ['💃','🕺','🎭','✨','🌟'] },
-  { keys: ['science','physics','chemistry','biology','lab','quantum','dna'], emoji: ['🔬','⚛️','🧬','🧪','💡','🔭','⚗️'] },
-  { keys: ['space','moon','star','planet','astronomy','galaxy','cosmos','rocket'], emoji: ['🚀','🌙','⭐','🌠','🪐','🌌','☄️','🛸'] },
-  { keys: ['ocean','sea','water','whale','shark','fish','marine','wetland'], emoji: ['🌊','🐋','🦈','🐠','🐙','🦑','🐚','🌊'] },
-  { keys: ['animal','wildlife','bird','penguin','cat','dog','tiger','bear','nature'], emoji: ['🦁','🐘','🦋','🦜','🐧','🦊','🐺','🦅'] },
-  { keys: ['book','read','library','story','literature','word','write','literacy'], emoji: ['📚','📖','✍️','📝','🖊️','📜','🔤','💬'] },
-  { keys: ['environment','earth','green','tree','forest','climate','ecology'], emoji: ['🌍','🌿','🌱','🌳','♻️','🌻','🍃','🌺'] },
-  { keys: ['health','mental','wellness','mind','yoga','meditation','body'], emoji: ['💚','🧘','🌸','✨','💆','🫀','🧠','🕊️'] },
-  { keys: ['food','eat','cook','pizza','cake','coffee','chocolate','bread'], emoji: ['🍕','🎂','☕','🍫','🥐','🍰','🧁','🍓'] },
-  { keys: ['halloween','spooky','ghost','witch'], emoji: ['🎃','👻','🕷️','🦇','🌙','⚡','🕯️'] },
-  { keys: ['christmas','holiday','festive','new year'], emoji: ['🎄','🎁','⭐','❄️','🎅','🦌','✨','🎆'] },
-  { keys: ['friendship','love','kindness','heart','care'], emoji: ['💖','🤝','💛','🌈','😊','🥰','💞','✨'] },
-  { keys: ['technology','computer','digital','data','code','internet','ai'], emoji: ['💻','⚡','🔌','🖥️','📱','🤖','⚙️','🛠️'] },
-  { keys: ['photo','camera','image','art','paint','creative','design'], emoji: ['📸','🎨','🖌️','✏️','🖼️','🎭','🌈'] },
+const headlines = [
+  "Another one for the books.",
+  "Drop the mic. Publication submitted.",
+  "Science just got better.",
+  "Quantum leap made.",
+  "You absolute legend.",
+  "That's a wrap — well done!",
+  "The world just got a little smarter.",
+  "Your work is out there. Go you.",
+  "Done and dusted. Beautifully."
 ];
 
-function getEmojis(dayName) {
-  if (!dayName) return ['🎉','✨','🌟','🚀','💡','🎊','⭐','🔥'];
-  const lower = dayName.toLowerCase();
-  for (const set of emojiMap) {
-    if (set.keys.some(k => lower.includes(k))) return set.emoji;
-  }
+const emojiMap = [
+  {keys:['jazz','music','song','band','drum','guitar','piano','concert'],emoji:['🎷','🎸','🎹','🎺','🎻','🥁','🎵','🎶']},
+  {keys:['dance','dancing','ballet','tango','waltz'],emoji:['💃','🕺','🎭','✨','🌟','🎊']},
+  {keys:['science','physics','chemistry','biology','lab','quantum','dna'],emoji:['🔬','⚛️','🧬','🧪','💡','🔭','⚗️']},
+  {keys:['space','moon','star','planet','astronomy','galaxy','cosmos','rocket'],emoji:['🚀','🌙','⭐','🌠','🪐','🌌','☄️']},
+  {keys:['ocean','sea','water','whale','shark','fish','marine','wetland'],emoji:['🌊','🐋','🦈','🐠','🐙','🦑','🐚']},
+  {keys:['animal','wildlife','bird','penguin','cat','dog','tiger','bear','nature'],emoji:['🦁','🐘','🦋','🦜','🐧','🦊','🦅']},
+  {keys:['book','read','library','story','literature','word','write','literacy','poetry'],emoji:['📚','📖','✍️','📝','🖊️','📜','💬']},
+  {keys:['environment','earth','green','tree','forest','climate','ecology'],emoji:['🌍','🌿','🌱','🌳','♻️','🌻','🍃']},
+  {keys:['health','mental','wellness','mind','yoga','meditation'],emoji:['💚','🧘','🌸','✨','💆','🧠','🕊️']},
+  {keys:['food','eat','cook','pizza','cake','coffee','chocolate','bread','croissant'],emoji:['🍕','🎂','☕','🍫','🥐','🍰','🧁']},
+  {keys:['halloween','spooky','ghost','witch'],emoji:['🎃','👻','🕷️','🦇','🌙']},
+  {keys:['christmas','holiday','festive','new year'],emoji:['🎄','🎁','⭐','❄️','🎅','✨']},
+  {keys:['friendship','love','kindness','heart','thank','compliment'],emoji:['💖','🤝','💛','🌈','😊','🥰']},
+  {keys:['technology','computer','digital','data','code','security','backup'],emoji:['💻','⚡','🖥️','📱','🤖','⚙️']},
+  {keys:['photo','camera','art','paint','creative','sketch'],emoji:['📸','🎨','🖌️','✏️','🖼️','🌈']},
+  {keys:['toilet','sanitation','hygiene'],emoji:['🚽','💧','✨','😂','🎉']},
+  {keys:['pirate','ship','sail','adventure'],emoji:['🏴‍☠️','⚓','🦜','🗺️','⚔️']},
+];
+function getEmojis(n) {
+  if (!n) return ['🎉','✨','🌟','🚀','💡','🎊','⭐','🔥'];
+  const l = n.toLowerCase();
+  for (const s of emojiMap) if (s.keys.some(k=>l.includes(k))) return s.emoji;
   return ['🎉','✨','🌟','🚀','💡','🎊','⭐','🔥'];
 }
 
-// ── THEMES ──────────────────────────────────────────────────
 const themes = [
-  { bg: '#1E3A5F', accent: '#FF391E',  name: 'navy'     },
-  { bg: '#2F0A01', accent: '#F58634',  name: 'burgundy' },
-  { bg: '#005555', accent: '#C73A9D',  name: 'teal'     },
-  { bg: '#1a1a2e', accent: '#FF391E',  name: 'midnight' },
-  { bg: '#3d0a3f', accent: '#F58634',  name: 'purple'   },
-  { bg: '#0d2137', accent: '#008B8B',  name: 'deep'     },
+  {bg:'#1E3A5F',accent:'#FF391E'},
+  {bg:'#2F0A01',accent:'#F58634'},
+  {bg:'#005555',accent:'#C73A9D'},
+  {bg:'#1a1a2e',accent:'#FF391E'},
+  {bg:'#1a0a2e',accent:'#F58634'},
+  {bg:'#0d2137',accent:'#008B8B'}
+];
+const ANIMS = ['fireworks','confetti','particles','stars','bubbles','emoji_rain'];
+
+const withDay = [
+  d=>`A fitting day for it — today is ${d}. The universe clearly approves. ✓`,
+  d=>`Submitted! And on ${d} no less. Honestly, iconic timing. ✓`,
+  d=>`Today the world celebrates ${d} — your contribution fits right in. ✓`,
+  d=>`We're noting that today is ${d}. Your submission energy is very on-brand. ✓`,
+  d=>`On ${d} of all days — the academic stars have aligned. ✓`,
+  d=>`Today is ${d} and now it's also the day you did something great. ✓`,
+  d=>`Of all the days to submit — you picked ${d}. Coincidence? We think not. ✓`,
+  d=>`${d} just became even more meaningful. Nice work. ✓`
+];
+const generic = [
+  ()=>`The world just got a little more knowledgeable. Well done. ✓`,
+  ()=>`Small step for you, giant leap for the field. ✓`,
+  ()=>`Go treat yourself — you've genuinely earned it. ✓`,
+  ()=>`Another publication in the archive. You're on a roll. ✓`,
+  ()=>`Somewhere out there, a future researcher just got luckier. ✓`,
+  ()=>`The body of knowledge grows. You did that. ✓`,
+  ()=>`Submission confirmed. The academic world awaits. ✓`,
+  ()=>`You absolute legend. Publication successfully submitted. ✓`
 ];
 
-// ── ANIMATIONS ──────────────────────────────────────────────
-const ANIMATIONS = ['fireworks', 'confetti', 'particles', 'stars', 'bubbles', 'emoji_rain'];
-
-// ── MESSAGES ──────────────────────────────────────────────
-const messagesWithDay = [
-  (d) => `A fitting day to share your work — today is ${d}. The universe clearly approves.`,
-  (d) => `Submitted! And on ${d} no less. Honestly, iconic timing.`,
-  (d) => `Your publication just landed. Today the world celebrates ${d} — your contribution fits right in.`,
-  (d) => `Done! We're noting that today is ${d}. Your submission energy is very on-brand.`,
-  (d) => `Published! On ${d} of all days — the academic stars have aligned.`,
-  (d) => `Today is ${d} and now it's also the day you did something great.`,
-  (d) => `Bonus points: today is ${d}. We'll take that as a very good omen.`,
-  (d) => `Of all the days to submit — you picked ${d}. Coincidence? We think not.`,
-];
-
-const messagesGeneric = [
-  () => `The world just got a little more knowledgeable. Well done.`,
-  () => `Small step for you, giant leap for the field.`,
-  () => `Go treat yourself — you've genuinely earned it.`,
-  () => `Another publication. You're on a roll.`,
-  () => `Somewhere out there, a future researcher just got luckier.`,
-  () => `The body of knowledge grows. You did that.`,
-  () => `Submission confirmed. The academic world awaits.`,
-  () => `You absolute legend. Publication successfully submitted.`,
-];
-
-// ── INIT ────────────────────────────────────────────────────
 const seed = Date.now();
-const rand = (arr) => arr[Math.floor((seed / 137) % 1) * arr.length | 0] || arr[seed % arr.length];
-const pick = (arr) => arr[seed % arr.length];
-
+const pick = arr => arr[seed % arr.length];
 const theme = pick(themes);
-const animType = pick(ANIMATIONS);
+const animType = pick(ANIMS);
 const emojis = getEmojis(dayName);
 
 document.body.style.background = theme.bg;
+document.getElementById('headline').textContent = pick(headlines);
+document.getElementById('msgText').textContent = dayName ? pick(withDay)(dayName) : pick(generic)();
 
-// Message
-const msgEl = document.getElementById('msgText');
 if (dayName) {
-  const fn = pick(messagesWithDay);
-  msgEl.textContent = fn(dayName);
-} else {
-  const fn = pick(messagesGeneric);
-  msgEl.textContent = fn();
+  const w = document.getElementById('dayPillWrap');
+  w.innerHTML = dayUrl
+    ? `<a class="day-pill" href="${dayUrl}" target="_blank">🗓 ${dayName}</a>`
+    : `<span class="day-pill">🗓 ${dayName}</span>`;
 }
 
-// Tick icon per theme
-const tickEl = document.getElementById('tick');
-tickEl.style.background = theme.accent + '33';
-tickEl.style.borderColor = theme.accent + '88';
+// Silent 20s fallback redirect
+setTimeout(() => { window.location.href = returnUrl; }, 20000);
 
-// Day pill
-if (dayName) {
-  const pillWrap = document.getElementById('dayPillWrap');
-  const dayUrl = decodeURIComponent(params.get('url') || '');
-  if (dayUrl) {
-    pillWrap.innerHTML = `<a class="day-pill" href="${dayUrl}" target="_blank">🗓 ${dayName}</a>`;
-  } else {
-    pillWrap.innerHTML = `<span class="day-pill">🗓 ${dayName}</span>`;
-  }
-}
-
-// Redirect after 6s
-const returnTarget = returnUrl || document.referrer || '';
-if (returnTarget) {
-  setTimeout(() => { window.location.href = returnTarget; }, 6000);
-}
-
-// ── CANVAS ANIMATIONS ───────────────────────────────────────
+// Canvas
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let W, H, particles = [];
+function resize() { W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+const colors = [theme.accent,'#FF391E','#F58634','#008B8B','#C73A9D','#ffffff','#ffdd57'];
 
-function resize() {
-  W = canvas.width  = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', resize);
-
-const accentRGB = hexToRgb(theme.accent);
-const colors = [theme.accent, '#FF391E','#F58634','#008B8B','#C73A9D','#ffffff','#ffdd57'];
-
-function hexToRgb(hex) {
-  const r = parseInt(hex.slice(1,3),16);
-  const g = parseInt(hex.slice(3,5),16);
-  const b = parseInt(hex.slice(5,7),16);
-  return {r,g,b};
-}
-
-// FIREWORKS
 function initFireworks() {
   function launch() {
-    const x = W * (0.2 + Math.random() * 0.6);
-    const y = H * (0.1 + Math.random() * 0.5);
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const count = 60 + Math.random() * 40;
-    for (let i = 0; i < count; i++) {
-      const angle = (Math.PI * 2 / count) * i + Math.random() * 0.3;
-      const speed = 2 + Math.random() * 5;
-      particles.push({
-        x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
-        life: 1, decay: 0.012 + Math.random() * 0.012,
-        size: 2 + Math.random() * 2, color, gravity: 0.08
-      });
-    }
+    const x=W*(0.2+Math.random()*0.6),y=H*(0.1+Math.random()*0.45),color=colors[Math.floor(Math.random()*colors.length)];
+    for(let i=0;i<70;i++){const a=(Math.PI*2/70)*i+Math.random()*0.3,s=2+Math.random()*5;particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:1,decay:0.012+Math.random()*0.01,size:2+Math.random()*2,color,gravity:0.08});}
   }
-  launch();
-  setTimeout(launch, 600);
-  setTimeout(launch, 1200);
-  setTimeout(launch, 2000);
-  setTimeout(launch, 3000);
-  setTimeout(launch, 4200);
+  [0,600,1300,2200,3400,4800].forEach(t=>setTimeout(launch,t));
 }
-
-// CONFETTI
 function initConfetti() {
-  for (let i = 0; i < 180; i++) {
-    particles.push({
-      x: Math.random() * W, y: -20 - Math.random() * H,
-      vx: (Math.random()-0.5)*3, vy: 2 + Math.random()*4,
-      life: 1, decay: 0.002, size: 6 + Math.random()*6,
-      color: colors[Math.floor(Math.random()*colors.length)],
-      rotation: Math.random()*Math.PI*2, rotSpeed: (Math.random()-0.5)*0.2,
-      wide: true, gravity: 0, wobble: Math.random()*Math.PI*2
-    });
-  }
+  for(let i=0;i<200;i++) particles.push({x:Math.random()*W,y:-20-Math.random()*H,vx:(Math.random()-0.5)*3,vy:2+Math.random()*4,life:1,decay:0.002,size:6+Math.random()*6,color:colors[Math.floor(Math.random()*colors.length)],rotation:Math.random()*Math.PI*2,rotSpeed:(Math.random()-0.5)*0.2,wide:true,wobble:Math.random()*Math.PI*2,gravity:0});
 }
-
-// PARTICLES BURST
 function initParticles() {
-  const cx = W/2, cy = H/2;
-  for (let i = 0; i < 120; i++) {
-    const angle = Math.random()*Math.PI*2;
-    const speed = 1 + Math.random()*8;
-    particles.push({
-      x: cx, y: cy,
-      vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed,
-      life: 1, decay: 0.008+Math.random()*0.008,
-      size: 2+Math.random()*4,
-      color: colors[Math.floor(Math.random()*colors.length)],
-      gravity: 0.05
-    });
-  }
+  const cx=W/2,cy=H/2;
+  for(let i=0;i<140;i++){const a=Math.random()*Math.PI*2,s=1+Math.random()*8;particles.push({x:cx,y:cy,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:1,decay:0.007+Math.random()*0.008,size:2+Math.random()*4,color:colors[Math.floor(Math.random()*colors.length)],gravity:0.05});}
 }
-
-// STARS
 function initStars() {
-  for (let i = 0; i < 200; i++) {
-    particles.push({
-      x: Math.random()*W, y: Math.random()*H,
-      vx: (Math.random()-0.5)*0.3, vy: -(0.2+Math.random()*0.8),
-      life: Math.random(), decay: 0.001+Math.random()*0.003,
-      size: 1+Math.random()*3, color: '#ffffff',
-      twinkle: Math.random()*Math.PI*2, twinkleSpeed: 0.05+Math.random()*0.1
-    });
-  }
+  for(let i=0;i<200;i++) particles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-0.5)*0.3,vy:-(0.2+Math.random()*0.8),life:Math.random(),decay:0.001+Math.random()*0.003,size:1+Math.random()*3,color:'#ffffff',twinkle:Math.random()*Math.PI*2,twinkleSpeed:0.05+Math.random()*0.1});
 }
-
-// BUBBLES
 function initBubbles() {
-  for (let i = 0; i < 60; i++) {
-    particles.push({
-      x: Math.random()*W, y: H + 50,
-      vx: (Math.random()-0.5)*1.5, vy: -(1+Math.random()*3),
-      life: 1, decay: 0.004+Math.random()*0.004,
-      size: 10+Math.random()*40, color: theme.accent,
-      bubble: true, wobble: Math.random()*Math.PI*2
-    });
-  }
+  for(let i=0;i<70;i++) particles.push({x:Math.random()*W,y:H+50,vx:(Math.random()-0.5)*1.5,vy:-(1+Math.random()*3),life:1,decay:0.003+Math.random()*0.004,size:10+Math.random()*45,color:theme.accent,bubble:true,wobble:Math.random()*Math.PI*2});
 }
-
-// DRAW LOOP
-function drawParticle(p) {
-  ctx.save();
-  ctx.globalAlpha = Math.max(0, p.life);
-
-  if (p.bubble) {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-    ctx.strokeStyle = p.color;
-    ctx.lineWidth = 2;
-    ctx.stroke();
-  } else if (p.wide) {
-    ctx.translate(p.x, p.y);
-    ctx.rotate(p.rotation);
-    ctx.fillStyle = p.color;
-    ctx.fillRect(-p.size/2, -p.size*0.3, p.size, p.size*0.6);
-  } else if (p.twinkle !== undefined) {
-    const twinkleAlpha = (Math.sin(p.twinkle) + 1) / 2;
-    ctx.globalAlpha = twinkleAlpha * p.life;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-    ctx.fillStyle = p.color;
-    ctx.fill();
-  } else {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-    ctx.fillStyle = p.color;
-    ctx.fill();
-  }
+function drawP(p) {
+  ctx.save(); ctx.globalAlpha=Math.max(0,p.life);
+  if(p.bubble){ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.strokeStyle=p.color;ctx.lineWidth=2;ctx.stroke();}
+  else if(p.wide){ctx.translate(p.x,p.y);ctx.rotate(p.rotation);ctx.fillStyle=p.color;ctx.fillRect(-p.size/2,-p.size*0.3,p.size,p.size*0.6);}
+  else if(p.twinkle!==undefined){ctx.globalAlpha=((Math.sin(p.twinkle)+1)/2)*p.life;ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill();}
+  else{ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill();}
   ctx.restore();
 }
-
-function updateParticle(p) {
-  p.x += p.vx;
-  p.y += p.vy;
-  if (p.gravity) p.vy += p.gravity;
-  if (p.rotation !== undefined) p.rotation += p.rotSpeed;
-  if (p.wobble !== undefined) { p.wobble += 0.05; p.vx += Math.sin(p.wobble) * 0.1; }
-  if (p.twinkle !== undefined) p.twinkle += p.twinkleSpeed;
-  p.life -= p.decay;
-  return p.life > 0;
+function updateP(p) {
+  p.x+=p.vx;p.y+=p.vy;if(p.gravity)p.vy+=p.gravity;if(p.rotation!==undefined)p.rotation+=p.rotSpeed;if(p.wobble!==undefined){p.wobble+=0.05;p.vx+=Math.sin(p.wobble)*0.1;}if(p.twinkle!==undefined)p.twinkle+=p.twinkleSpeed;p.life-=p.decay;return p.life>0;
 }
-
-let frameCount = 0;
+let frame=0;
 function loop() {
-  ctx.clearRect(0, 0, W, H);
-  particles = particles.filter(p => {
-    const alive = updateParticle(p);
-    if (alive) drawParticle(p);
-    return alive;
-  });
-
-  // Stars: keep replenishing
-  if (animType === 'stars' && frameCount % 3 === 0 && particles.length < 200) {
-    particles.push({
-      x: Math.random()*W, y: H,
-      vx: (Math.random()-0.5)*0.3, vy: -(0.5+Math.random()*1.5),
-      life: 1, decay: 0.003+Math.random()*0.003,
-      size: 1+Math.random()*3, color: '#ffffff',
-      twinkle: Math.random()*Math.PI*2, twinkleSpeed: 0.05+Math.random()*0.1
-    });
-  }
-
-  // Confetti: replenish briefly
-  if (animType === 'confetti' && frameCount < 200 && frameCount % 4 === 0) {
-    particles.push({
-      x: Math.random()*W, y: -20,
-      vx: (Math.random()-0.5)*3, vy: 2+Math.random()*4,
-      life: 1, decay: 0.003, size: 6+Math.random()*6,
-      color: colors[Math.floor(Math.random()*colors.length)],
-      rotation: Math.random()*Math.PI*2, rotSpeed: (Math.random()-0.5)*0.2,
-      wide: true, wobble: Math.random()*Math.PI*2
-    });
-  }
-
-  frameCount++;
-  requestAnimationFrame(loop);
+  ctx.clearRect(0,0,W,H);
+  particles=particles.filter(p=>{const a=updateP(p);if(a)drawP(p);return a;});
+  if(animType==='stars'&&frame%3===0&&particles.length<200) particles.push({x:Math.random()*W,y:H,vx:(Math.random()-0.5)*0.3,vy:-(0.5+Math.random()*1.5),life:1,decay:0.003+Math.random()*0.003,size:1+Math.random()*3,color:'#ffffff',twinkle:Math.random()*Math.PI*2,twinkleSpeed:0.05+Math.random()*0.1});
+  if(animType==='confetti'&&frame<200&&frame%4===0) particles.push({x:Math.random()*W,y:-20,vx:(Math.random()-0.5)*3,vy:2+Math.random()*4,life:1,decay:0.003,size:6+Math.random()*6,color:colors[Math.floor(Math.random()*colors.length)],rotation:Math.random()*Math.PI*2,rotSpeed:(Math.random()-0.5)*0.2,wide:true,wobble:Math.random()*Math.PI*2});
+  frame++;requestAnimationFrame(loop);
 }
-
-// ── EMOJI RAIN ───────────────────────────────────────────────
 function startEmojiRain() {
-  const layer = document.getElementById('emojiLayer');
-  let count = 0;
-  const interval = setInterval(() => {
-    if (count > 40) { clearInterval(interval); return; }
-    const el = document.createElement('div');
-    el.className = 'floating-emoji';
-    el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-    el.style.left = Math.random()*100 + 'vw';
-    el.style.bottom = '-60px';
-    el.style.fontSize = (1.5 + Math.random()*2) + 'rem';
-    const dur = 3 + Math.random()*4;
-    el.style.animationDuration = dur + 's';
-    el.style.animationDelay = Math.random()*1 + 's';
-    layer.appendChild(el);
-    setTimeout(() => el.remove(), (dur+1)*1000);
-    count++;
-  }, 120);
+  const layer=document.getElementById('emojiLayer');let count=0;
+  const iv=setInterval(()=>{if(count>50){clearInterval(iv);return;}const el=document.createElement('div');el.className='floating-emoji';el.textContent=emojis[Math.floor(Math.random()*emojis.length)];el.style.left=Math.random()*100+'vw';el.style.bottom='-60px';el.style.fontSize=(1.5+Math.random()*2.5)+'rem';const dur=3+Math.random()*4;el.style.animationDuration=dur+'s';el.style.animationDelay=Math.random()*1.5+'s';layer.appendChild(el);setTimeout(()=>el.remove(),(dur+2)*1000);count++;},100);
 }
-
-// ── LAUNCH ───────────────────────────────────────────────────
-switch(animType) {
-  case 'fireworks':   initFireworks(); break;
-  case 'confetti':    initConfetti();  break;
-  case 'particles':   initParticles(); break;
-  case 'stars':       initStars();     break;
-  case 'bubbles':     initBubbles();   break;
-  case 'emoji_rain':  startEmojiRain(); break;
-}
-
-// Always add some emoji rain on top for extra delight
-if (animType !== 'emoji_rain') {
-  setTimeout(startEmojiRain, 800);
-}
-
+switch(animType){case'fireworks':initFireworks();break;case'confetti':initConfetti();break;case'particles':initParticles();break;case'stars':initStars();break;case'bubbles':initBubbles();break;case'emoji_rain':startEmojiRain();break;}
+if(animType!=='emoji_rain')setTimeout(startEmojiRain,1000);
 loop();
 </script>
 </body>
