@@ -26,11 +26,12 @@
     margin: 0 auto 1.5rem;
     animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.35s both;
   }
-  .logo-wrap img { height: 200px; width: auto; }
+  .logo-wrap img { height: 90px; width: auto; }
   @keyframes popIn { from{transform:scale(0) rotate(-10deg);opacity:0} to{transform:scale(1) rotate(0);opacity:1} }
   .label { font-family:'Archivo',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:0.6rem; animation:fadeInUp 0.6s ease 0.5s both; }
-  h1 { font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(1.8rem,5.5vw,3rem); color:#fff; line-height:1.05; margin-bottom:1rem; animation:fadeInUp 0.6s ease 0.6s both; }
-  .message { font-size:clamp(0.95rem,2.2vw,1.15rem); color:rgba(255,255,255,0.82); line-height:1.65; font-weight:300; margin-bottom:1.5rem; animation:fadeInUp 0.6s ease 0.7s both; }
+  h1 { font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(1.8rem,5.5vw,3rem); color:#fff; line-height:1.1; margin-bottom:1rem; animation:fadeInUp 0.6s ease 0.6s both; }
+  h1 .day-name { display:inline; font-size:1.2em; letter-spacing:-0.01em; }
+  .message { font-size:clamp(0.95rem,2.2vw,1.15rem); color:rgba(255,255,255,0.7); line-height:1.65; font-weight:300; margin-bottom:1.5rem; animation:fadeInUp 0.6s ease 0.7s both; }
   .day-pill {
     display:inline-block; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
     border-radius:100px; padding:0.35rem 1.1rem; font-family:'Archivo',sans-serif; font-size:0.8rem;
@@ -61,6 +62,7 @@
   <div class="logo-wrap">
     <img src="QUBIC_logo_stacked.png" alt="QUBIC" onerror="this.style.display='none'" />
   </div>
+  <div class="label">QUBIC Research</div>
   <h1 id="headline">Another one for the books.</h1>
   <p class="message" id="msgText"></p>
   <div id="dayPillWrap"></div>
@@ -129,14 +131,14 @@ const themes = [
 const ANIMS = ['fireworks','confetti','particles','stars','bubbles','emoji_rain'];
 
 const withDay = [
-  d=>`A fitting day for it — today is ${d}. The universe clearly approves. ✓`,
-  d=>`Submitted! And on ${d} no less. Honestly, iconic timing. ✓`,
-  d=>`Today the world celebrates ${d} — your contribution fits right in. ✓`,
-  d=>`We're noting that today is ${d}. Your submission energy is very on-brand. ✓`,
-  d=>`On ${d} of all days — the academic stars have aligned. ✓`,
-  d=>`Today is ${d} and now it's also the day you did something great. ✓`,
-  d=>`Of all the days to submit — you picked ${d}. Coincidence? We think not. ✓`,
-  d=>`${d} just became even more meaningful. Nice work. ✓`
+  `The universe clearly approves. ✓`,
+  `Honestly, iconic timing. ✓`,
+  `Your contribution fits right in. ✓`,
+  `Your submission energy is very on-brand. ✓`,
+  `The academic stars have aligned. ✓`,
+  `And now it's also the day you did something great. ✓`,
+  `Coincidence? We think not. ✓`,
+  `Nice work. ✓`
 ];
 const generic = [
   ()=>`The world just got a little more knowledgeable. Well done. ✓`,
@@ -156,15 +158,25 @@ const animType = pick(ANIMS);
 const emojis = getEmojis(dayName);
 
 document.body.style.background = theme.bg;
-document.getElementById('headline').textContent = pick(headlines);
-document.getElementById('msgText').textContent = dayName ? pick(withDay)(dayName) : pick(generic)();
 
 if (dayName) {
-  const w = document.getElementById('dayPillWrap');
-  w.innerHTML = dayUrl
-    ? `<a class="day-pill" href="${dayUrl}" target="_blank">🗓 ${dayName}</a>`
-    : `<span class="day-pill">🗓 ${dayName}</span>`;
+  // Hero: "Today is [DayName in accent colour]"
+  const h1 = document.getElementById('headline');
+  h1.innerHTML = `Today is <span class="day-name" style="color:${theme.accent}">${dayName}</span>`;
+  // Quip underneath
+  document.getElementById('msgText').textContent = pick(withDay);
+  // Pill links to the day URL
+  if (dayUrl) {
+    const w = document.getElementById('dayPillWrap');
+    w.innerHTML = `<a class="day-pill" href="${dayUrl}" target="_blank">↗ Learn more</a>`;
+  }
+} else {
+  document.getElementById('headline').textContent = pick(headlines);
+  document.getElementById('msgText').textContent = pick(generic)();
 }
+
+// Silent 20s fallback redirect
+setTimeout(() => { window.location.href = returnUrl; }, 20000);
 
 // Canvas
 const canvas = document.getElementById('canvas');
