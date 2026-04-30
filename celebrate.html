@@ -26,10 +26,10 @@
     margin: 0 auto 1.5rem;
     animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.35s both;
   }
-  .logo-wrap img { height: 150px; width: auto; }
+  .logo-wrap img { height: 90px; width: auto; }
   @keyframes popIn { from{transform:scale(0) rotate(-10deg);opacity:0} to{transform:scale(1) rotate(0);opacity:1} }
   .label { font-family:'Archivo',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:0.6rem; animation:fadeInUp 0.6s ease 0.5s both; }
-  h1 { font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(1.8rem,5.5vw,3rem); color:#fff; line-height:1.1; margin-bottom:1rem; animation:fadeInUp 0.6s ease 0.6s both; }
+  h1 { font-family:'Archivo',sans-serif; font-weight:700; font-size:clamp(1.8rem,5.5vw,3rem); color:#fff; line-height:1.1; margin-bottom:1rem; animation:fadeInUp 0.6s ease 0.6s both; }
   h1 .day-name { display:inline; font-size:1.2em; letter-spacing:-0.01em; }
   .message { font-size:clamp(0.95rem,2.2vw,1.15rem); color:rgba(255,255,255,0.7); line-height:1.65; font-weight:300; margin-bottom:1.5rem; animation:fadeInUp 0.6s ease 0.7s both; }
   .day-pill {
@@ -62,6 +62,7 @@
   <div class="logo-wrap">
     <img src="QUBIC_logo_stacked.png" alt="QUBIC" onerror="this.style.display='none'" />
   </div>
+  <div class="label">QUBIC Research</div>
   <h1 id="headline">Another one for the books.</h1>
   <p class="message" id="msgText"></p>
   <div id="dayPillWrap"></div>
@@ -81,16 +82,17 @@ const dayUrl  = decodeURIComponent(params.get('url') || '');
 const returnUrl = decodeURIComponent(params.get('return') || 'https://creatorapp.zohopublic.com.au/admin.qubic_uq/qubic-clever/form-perma/Publications/9g26Un0p6yhtdDVCx3TVhU0JY6P2p72ASaMqZHaEwbjemkWTU26naZaMJ5mKMsJjvRjp4pjynyHvYa2UXKDejeajtTafHuUkf4w6');
 document.getElementById('btnSubmit').href = returnUrl;
 
+// [prefix, suffix]: with day = "[prefix] on [DayName][suffix]", without = "[prefix][suffix]"
 const headlines = [
-  "Another one for the books.",
-  "Drop the mic. Publication submitted.",
-  "Science just got better.",
-  "Quantum leap made.",
-  "You absolute legend.",
-  "That's a wrap — well done!",
-  "The world just got a little smarter.",
-  "Your work is out there. Go you.",
-  "Done and dusted. Beautifully."
+  ["Another one for the books",           "."],
+  ["Drop the mic",                         "."],
+  ["Science just got better",             "."],
+  ["Quantum leap made",                   "."],
+  ["You absolute legend",                 "."],
+  ["The world just got a little smarter", "."],
+  ["Your work is out there",              ". Go you."],
+  ["Done and dusted",                     ". Beautifully."],
+  ["Knowledge dropped",                   "."],
 ];
 
 const emojiMap = [
@@ -129,25 +131,16 @@ const themes = [
 ];
 const ANIMS = ['fireworks','confetti','particles','stars','bubbles','emoji_rain'];
 
-const withDay = [
-  `The universe clearly approves. ✓`,
-  `Honestly, iconic timing. ✓`,
-  `Your contribution fits right in. ✓`,
-  `Your submission energy is very on-brand. ✓`,
-  `The academic stars have aligned. ✓`,
-  `And now it's also the day you did something great. ✓`,
-  `Coincidence? We think not. ✓`,
-  `Nice work. ✓`
-];
+// withDay removed - day woven into headline
 const generic = [
-  ()=>`The world just got a little more knowledgeable. Well done. ✓`,
-  ()=>`Small step for you, giant leap for the field. ✓`,
-  ()=>`Go treat yourself — you've genuinely earned it. ✓`,
-  ()=>`Another publication in the archive. You're on a roll. ✓`,
-  ()=>`Somewhere out there, a future researcher just got luckier. ✓`,
-  ()=>`The body of knowledge grows. You did that. ✓`,
-  ()=>`Submission confirmed. The academic world awaits. ✓`,
-  ()=>`You absolute legend. Publication successfully submitted. ✓`
+  "The world just got a little more knowledgeable.",
+  "Small step for you, giant leap for the field.",
+  "Go treat yourself. You've genuinely earned it.",
+  "Another publication in the archive. You're on a roll.",
+  "Somewhere out there, a future researcher just got luckier.",
+  "The body of knowledge grows. You did that.",
+  "Submission confirmed. The academic world awaits.",
+  "You absolute legend. Publication successfully submitted."
 ];
 
 const seed = Date.now();
@@ -158,21 +151,23 @@ const emojis = getEmojis(dayName);
 
 document.body.style.background = theme.bg;
 
+const h1 = document.getElementById('headline');
+const hl = pick(headlines);
+
 if (dayName) {
-  // Hero: "Today is [DayName in accent colour]"
-  const h1 = document.getElementById('headline');
-  h1.innerHTML = `Today is <span class="day-name" style="color:${theme.accent}">${dayName}</span>`;
-  // Quip underneath
-  document.getElementById('msgText').textContent = pick(withDay);
-  // Pill links to the day URL
+  h1.innerHTML = `${hl[0]} on <span style="color:${theme.accent};font-weight:700">${dayName}</span>${hl[1]}`;
+  document.getElementById('msgText').textContent = '';
   if (dayUrl) {
     const w = document.getElementById('dayPillWrap');
-    w.innerHTML = `<a class="day-pill" href="${dayUrl}" target="_blank">↗ Learn more</a>`;
+    w.innerHTML = `<a class="day-pill" href="${dayUrl}" target="_blank">↗ Learn more about ${dayName}</a>`;
   }
 } else {
-  document.getElementById('headline').textContent = pick(headlines);
-  document.getElementById('msgText').textContent = pick(generic)();
+  h1.textContent = hl[0] + hl[1];
+  document.getElementById('msgText').textContent = pick(generic);
 }
+
+// Silent 20s fallback redirect
+setTimeout(() => { window.location.href = returnUrl; }, 20000);
 
 // Canvas
 const canvas = document.getElementById('canvas');
